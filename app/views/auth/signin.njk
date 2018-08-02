@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Docfy</title>
+{% extends 'layouts/default.njk' %}
 
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+{% block body %}
   <div class="auth-wrapper">
     <h1>Docfy</h1>
     <form action="dashboard.html" method="get">
@@ -16,5 +10,4 @@
       <a href="/signup">Criar minha conta</a>
     </form>
   </div>
-</body>
-</html>
+{% endblock %}
