@@ -37,7 +37,7 @@ module.exports = {
       const user = await User.findOne({ where: { email } });
 
       if (!user) {
-        req.flash('error', 'Usuáro inexistente');
+        req.flash('error', 'Usuário inexistente');
         return res.redirect('back');
       }
 
@@ -48,7 +48,7 @@ module.exports = {
 
       req.session.user = user;
 
-      return res.session.save(() => res.redirect('app/dashboard'));
+      return req.session.save(() => res.redirect('app/dashboard'));
     } catch (err) {
       return next(err);
     }

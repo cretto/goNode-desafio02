@@ -2,7 +2,8 @@ const express = require('express');
 
 const routes = express.Router();
 
-const authMiddleware = require('./middlewares/auth');
+// const authMiddleware = require('./middlewares/auth');
+const guestMiddleware = require('./middlewares/guest');
 
 const authController = require('./controllers/authController');
 
@@ -15,12 +16,16 @@ routes.use((req, res, next) => {
 /**
  * Auth
  */
-routes.get('/', authController.signin);
-routes.get('/signup', authController.signup);
+routes.get('/', guestMiddleware, authController.signin);
+routes.get('/signup', guestMiddleware, authController.signup);
 routes.get('/signout', authController.signout);
 
 routes.post('/register', authController.register);
 routes.post('/authenticate', authController.authenticate);
+
+/**
+ * Dashboard
+ */
 
 /**
  * Handler errors
