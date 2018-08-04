@@ -2,10 +2,11 @@ const express = require('express');
 
 const routes = express.Router();
 
-// const authMiddleware = require('./middlewares/auth');
+const authMiddleware = require('./middlewares/auth');
 const guestMiddleware = require('./middlewares/guest');
 
 const authController = require('./controllers/authController');
+const dashboardController = require('./controllers/dashboardController');
 
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
@@ -26,6 +27,8 @@ routes.post('/authenticate', authController.authenticate);
 /**
  * Dashboard
  */
+routes.use('/app', authMiddleware);
+routes.get('/app/dashboard', dashboardController.index);
 
 /**
  * Handler errors
