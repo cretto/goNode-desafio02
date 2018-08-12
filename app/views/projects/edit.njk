@@ -1,0 +1,48 @@
+{% extends 'layouts/default.njk' %}
+
+{% block body %}
+  <div class="wrapper">
+    {% include 'partials/header.njk' %}
+
+    <section id="main">
+      <div class="container">
+        <header>
+          <h2>{{project.title}}</h2>
+          <div class="addon">
+            <form action="/app/projects/{{project.id}}?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-danger">Excluir projeto</button>
+            </form>
+          </div>
+        </header>
+        <section id="content">
+          <nav>
+            <div class="sessions">
+              {% for section in project.Sections %}
+                <a href="/app/projects/{{project.id}}/sections/{{section.id}}">{{section.title}}</a>
+              {% endfor %}
+            </div>
+
+            <form action="/app/projects/{{project.id}}/sections/create" method="post">
+              <input type="text" name="title" placeholder="Nova seção">
+              <button type="submit" class="btn"><img src="/img/plus.svg"></button>
+            </form>
+          </nav>
+
+          {% if currentSection %}
+            <article>
+              <div class="content-container">
+                <form action="/app/projects/{{project.id}}/sections/{{currentSection.id}}?_method=PUT" method="POST" class="form-remove-section">
+                  <input type="text" name="title" placeholder="Titulo" value="{{currentSection.title}}" class="input-section-title" />
+                  <textarea name="content" class="mde" placeholder="Conteúdo do snippet">{{currentSection.content}}</textarea>
+
+                  <a href="/app/projects/{{project.id}}/sections/{{currentSection.id}}" class="btn btn-default">Cancelar</a>
+                  <button type="submit" class="btn btn-info btn-save-section">Salvar</button>
+                </form>
+              </div>
+            </article>
+          {% endif %}
+        </section>
+      </div>
+    </section>
+  </div>
+{% endblock %}

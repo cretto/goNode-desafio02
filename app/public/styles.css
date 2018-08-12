@@ -42,12 +42,49 @@ textarea:focus {
   display: inline-block;
 }
 
+.form-remove-section {
+  margin-left: 20px;
+}
+
+.btn-remove-section {
+  height: 20px;
+  font-size: 10px;
+  line-height: 0px;
+}
+
+.btn-save-section {
+  height: 20px;
+  font-size: 10px;
+  line-height: 0px;
+  float: right;
+  margin-top: 10px !important;
+}
+
 .btn:hover {
   background: #6bd59c;
 }
 
 .btn.btn-danger {
   background: #e06666;
+}
+
+.btn.btn-default {
+  background: #ccc;
+  height: 20px;
+  font-size: 10px;
+  line-height: normal !important;
+  margin-left: 20px;
+  color: #fff !important;
+  margin: 0px;
+}
+
+.btn.btn-info {
+  height: 20px;
+  font-size: 10px;
+  line-height: normal !important;
+  margin-left: 20px;
+  color: #fff !important;
+  margin: 0px;
 }
 
 .btn.btn-danger:hover {
@@ -336,4 +373,16 @@ textarea:focus {
 
 .alert-hidden {
   opacity: 0;
+}
+
+.input-section-title {
+  background: #fff;
+  border-radius: 3px;
+  height: 40px;
+  padding: 0 20px;
+  color: #444;
+  font-size: 15px;
+  border: 1px solid #ddd;
+  margin: 0 8px 10px 0;
+  width: 160px;
 }

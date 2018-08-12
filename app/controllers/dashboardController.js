@@ -1,7 +1,17 @@
+const { Project } = require('../models');
+
 module.exports = {
-  index(req, res, next) {
+  async index(req, res, next) {
     try {
-      return res.render('dashboard/index');
+      const { user } = req.session;
+
+      const projects = await Project.findAll({
+        where: {
+          UserId: user.id,
+        },
+      });
+
+      return res.render('dashboard/index', { projects, user });
     } catch (err) {
       return next(err);
     }
